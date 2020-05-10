@@ -1,0 +1,33 @@
+#menu-list
+    display flex
+    flex-direction column
+    width 460px
+    margin 0 auto
+    padding 20px
+
+    & > .not-found
+        width 95%
+        list-style-type none
+
+        & > .article
+            display flex
+            flex-direction column
+            justify-content center
+            align-items flex-start
+
+            & > .illust
+                display block
+                width 196px
+                height 196px
+                margin 20px auto
+
+            & > .title
+                width 100%
+                font-size 32px
+                color var(--title)
+                font-weight 400
+                text-align center
+
+    @media screen and (max-width 568px)
+        &
+            width 95%

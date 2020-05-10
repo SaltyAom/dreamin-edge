@@ -1,0 +1,35 @@
+{
+  "private": true,
+  "name": "maidreamin-edge",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "build": "preact build",
+    "serve": "sirv build --cors --single",
+    "dev": "preact watch",
+    "lint": "eslint src"
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-synacor"
+  },
+  "eslintIgnore": [
+    "build/*"
+  ],
+  "devDependencies": {
+    "eslint": "^7.0.0",
+    "eslint-config-synacor": "^3.0.5",
+    "preact-cli": "^3.0.0-rc.6",
+    "sirv-cli": "^0.4.5",
+    "stylus": "^0.54.7",
+    "stylus-loader": "^3.0.2"
+  },
+  "dependencies": {
+    "isomorphic-unfetch": "^3.0.0",
+    "preact": "^10.4.1",
+    "preact-cli-svg-loader": "^1.1.0",
+    "preact-render-to-string": "^5.1.8",
+    "storeon": "^2.0.2",
+    "swr": "^0.2.0",
+    "wouter": "^2.4.0"
+  }
+}

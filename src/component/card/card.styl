@@ -1,0 +1,66 @@
+.list
+    list-style-type none
+    padding 0
+
+    & > .card
+        display flex
+        flex-direction column
+        margin 8px 0
+        padding 12px 24px
+        box-shadow 0 4px 16px rgba(0,0,0,.1)
+        border-radius 4px
+        transition box-shadow .2s ease-out
+
+        &:hover,
+        &:focus
+            box-shadow 0 8px 32px rgba(0,0,0,.15)
+
+        & > .detail
+            display flex
+            flex-direction row
+            justify-content space-between
+            align-items center
+            width 100%
+            margin 0 0 8px
+            padding 8px 0 8px
+
+            & > .name
+                color var(--title)
+                font-size 32px
+                font-weight 500
+                text-transform capitalize
+                margin 0
+                cursor default
+
+            & > .price
+                color var(--detail)
+                font-size 21px
+                font-weight 400
+                margin 0
+                padding 0 0 0 12px
+                cursor default
+
+        & > .option
+            display block
+            width 100%
+            margin 0
+            padding 0
+
+            & > .name
+                appearance none
+                color var(--detail)
+                font-size 16px
+                font-weight 300
+                text-align left
+                margin 0
+                padding 4px 16px 4px 0
+                border 0
+                background-color transparent
+                text-transform capitalize
+                cursor pointer
+                transition color .2s ease-out
+                outline none
+
+                &:hover,
+                &:focus
+                    color var(--link)
