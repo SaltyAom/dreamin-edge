@@ -16,6 +16,11 @@ const Sort = ({ sort, updateSort }) => {
                 class={`toggler ${isOpen ? "-active" : ""}`}
                 onClick={toggleOpen}
             >
+                <img
+                    class="icon"
+                    src="/assets/icons/notes.svg"
+                    alt="Toggle Icon"
+                />
                 Sort
             </button>
             <article class={`controller ${!isOpen ? "-close" : ""}`}>

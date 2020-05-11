@@ -5,6 +5,16 @@
     align-items flex-start
     width 440px
     margin 0 auto
+
+    & > .toggler
+        display flex
+        flex-direction row
+
+        & > .icon
+            display inline-block
+            width 18px
+            height 18px
+            margin 0 4px 0 0
     
     & > .toggler,
     & > .controller > .row > .toggler
@@ -13,7 +23,7 @@
         color var(--detail)
         font-size 16px
         font-weight 400
-        padding 8px 20px
+        padding 8px 16px
         border-radius 4px
         border 0
         outline none
@@ -49,3 +59,7 @@
 
             & > .toggler
                 margin 0 4px 0 0
+
+    @media screen and (max-width 567.9px)
+        &
+            width 90%
