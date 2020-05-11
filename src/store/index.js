@@ -8,5 +8,13 @@ const dreamin = (store) => {
     }))
 }
 
-const store = createStoreon([dreamin])
+const order = (store) => {
+    store.on("@init", () => ({ order: [] }))
+
+    store.on("UPDATE_ORDER", (store, order) => ({
+        order: [...store.order, order]
+    }))
+}
+
+const store = createStoreon([dreamin, order])
 export default store

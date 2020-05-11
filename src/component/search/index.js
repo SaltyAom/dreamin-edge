@@ -1,6 +1,9 @@
 import { useRef } from "preact/hooks"
 
+import { Link } from "wouter"
+
 import SearchIcon from "./assets/search"
+import CoffeeIcon from "./assets/coffee"
 
 import "./search.styl"
 
@@ -26,6 +29,11 @@ const Search = ({ updateSearch }) => {
                 placeholder="Search Menu"
                 onInput={handleSearch}
             />
+            <Link href="/order">
+                <a class="order-list">
+                    <CoffeeIcon />
+                </a>
+            </Link>
         </section>
     )
 }
