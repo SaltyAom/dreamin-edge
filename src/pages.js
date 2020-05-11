@@ -1,4 +1,5 @@
 import Index from "./pages/index"
+import Order from "./pages/order"
 import NotFound from './pages/404'
 
 import useLocation from "wouter/use-location"
@@ -9,6 +10,9 @@ const Pages = () => {
     switch (location) {
         case "/":
             return <Index />
+
+        case "/order":
+            return <Order />
 
         default:
             return <NotFound />

@@ -1,6 +1,7 @@
 .list
-    list-style-type none
+    position relative
     padding 0
+    list-style-type none
 
     & > .card
         display flex
@@ -15,6 +16,12 @@
         &:hover,
         &:focus
             box-shadow 0 8px 32px rgba(0,0,0,.15)
+
+            & > .function
+                z-index 1
+                opacity 1
+                transform translateY(0)
+                transition opacity .2s ease-out, transform .2s ease-out, z-index 0s ease-out
 
         & > .detail
             display flex
@@ -65,3 +72,60 @@
                 &:hover,
                 &:focus
                     color var(--link)
+
+        & > .function
+            position absolute
+            z-index -1
+            left 0
+            bottom -12px + (-20px) + (-32px)
+            display block
+            opacity 0
+            background-color transparent
+            padding 8px 0
+            transform translateY(12px)
+            transition opacity .2s ease-out, transform .2s ease-out, z-index .4s linear
+
+            & > .balloon
+                display flex
+                flex-direction column
+                justify-content flex-start
+                align-items flex-start
+                padding 8px 0
+                background-color var(--snack)
+                border 0
+                border-radius 6px
+                backdrop-filter blur(4px)
+                -webkit-backdrop-filter blur(4px)
+                box-shadow 0 4px 16px rgba(0,0,0,.2)
+
+                @media screen and (prefers-color-scheme dark)
+                    box-shadow 0 4px 16px rgba(0,0,0,.5)
+
+                & > .action
+                    appearance none
+                    -webkit-appearance none
+                    display flex
+                    flex-direction row
+                    justify-content flex-start
+                    align-items center
+                    width 100%
+                    min-width 160px
+                    font-size 18px
+                    color var(--title)
+                    font-weight 400
+                    padding 8px
+                    background-color transparent
+                    border 0
+                    transition background-color .2s ease-out
+                    outline none
+                    cursor pointer
+
+                    &:hover,
+                    &:focus
+                        background-color var(--active)
+
+                    & > .icon
+                        width 24px
+                        height 24px
+                        margin 0 8px 0 0
+                        padding 1.5px
