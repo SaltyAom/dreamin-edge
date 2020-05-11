@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from "preact/hooks"
+import { useState, useCallback } from "preact/hooks"
 
 import { useStoreon } from "storeon/preact"
 
@@ -16,7 +16,7 @@ const Card = ({ name, price }) => {
     }, [])
 
     let addOrder = useCallback(
-        () => dispatch("UPDATE_ORDER", { name, price }),
+        () => dispatch("UPDATE_ORDER", { name: selected, price }),
         [dispatch, name, price]
     )
 
@@ -25,7 +25,12 @@ const Card = ({ name, price }) => {
             <article class="card">
                 <header class="detail">
                     <h3 class="name">{selected}</h3>
-                    <p class="price">{price}฿</p>
+                    <p class="price">
+                        {price.toLocaleString("th", {
+                            maximumFractionDigits: 0
+                        })}
+                        ฿
+                    </p>
                 </header>
                 <aside class="option">
                     {name

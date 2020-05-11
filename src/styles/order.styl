@@ -1,0 +1,52 @@
+#order
+    width 440px
+    margin 40px auto 20px auto
+    padding 8px 0
+    border-radius 4px
+    background-color var(--root)
+    box-shadow 0 4px 16px rgba(0,0,0,.2)
+    border-spacing 0
+
+    & > .header
+        & > .row
+            border-bottom 1px solid var(--border)
+
+            & > .data
+                color var(--title)
+                font-size 21px
+                font-weight 700
+                padding 8px 16px 16px 16px
+                border-bottom 1px solid var(--selection)
+
+                &.price
+                    text-align center
+                    white-space no-wrap
+                    font-variant-numeric tabular-nums
+
+    & > .table
+        & > .row
+            background-color transparent
+            transition background-color .2s ease-out
+
+            &.summary
+                & > .data
+                    border-top 1px solid var(--selection)
+
+            &:hover,
+            &:focus
+                background-color var(--active)
+
+            & > .data
+                color var(--detail)
+                font-size 21px
+                font-weight 400
+                text-transform capitalize
+                padding 16px
+                cursor default
+
+                &.price
+                    text-align right
+                    font-variant-numeric tabular-nums
+
+    @media screen and (max-width 567.9px)
+        width 90%
