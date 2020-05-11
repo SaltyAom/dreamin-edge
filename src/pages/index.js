@@ -4,11 +4,16 @@ import { useStoreon } from "storeon/preact"
 
 import Card from "../component/card"
 import Serach from "../component/search"
+import Sort from "../component/sort"
 
 import "../styles/menu-list.styl"
 
 const Index = () => {
-    let [search, updateSearch] = useState("")
+    let [search, updateSearch] = useState(""),
+        [sort, updateSort] = useState({
+            by: "index",
+            order: "asc"
+        })
 
     let { dreamin } = useStoreon("dreamin")
 
@@ -16,9 +21,14 @@ const Index = () => {
         return (
             <Fragment>
                 <Serach {...{ updateSearch }} />
+                <Sort {...{ sort, updateSort }} />
                 <ul id="menu-list">
                     <li id="menu-fetch">
-                        <img class="illust" src='/assets/illustrations/loading.svg' alt="Loading" />
+                        <img
+                            class="illust"
+                            src="/assets/illustrations/loading.svg"
+                            alt="Loading"
+                        />
                         <h2 class="title">Downloading data...</h2>
                         <p class="detail">Thanks for your patient!</p>
                     </li>
@@ -36,13 +46,35 @@ const Index = () => {
             : true
     )
 
+    switch (true) {
+        case sort.by === "index" && sort.order === "desc":
+            menuList = menuList.reverse()
+            break
+
+        case sort.by === "price" && sort.order === "asc":
+            menuList = menuList.sort((a, b) => a.price - b.price)
+            break
+
+        case sort.by === "price" && sort.order === "desc":
+            menuList = menuList.sort((a, b) => b.price - a.price)
+            break
+
+        default:
+            break
+    }
+
     if (!menuList.length)
         return (
             <Fragment>
                 <Serach {...{ updateSearch }} />
+                <Sort {...{ sort, updateSort }} />
                 <ul id="menu-list">
                     <li id="menu-fetch">
-                        <img class="illust" src='/assets/illustrations/not_found.svg' alt="NoT found" />
+                        <img
+                            class="illust"
+                            src="/assets/illustrations/not_found.svg"
+                            alt="NoT found"
+                        />
                         <h1 class="title">Not Found</h1>
                         <p class="detail">Maybe try other keyword?</p>
                     </li>
@@ -53,6 +85,7 @@ const Index = () => {
     return (
         <Fragment>
             <Serach {...{ updateSearch }} />
+            <Sort {...{ sort, updateSort }} />
             <ul id="menu-list">
                 {menuList.map(({ name, subMenu, price }) => (
                     <Card
