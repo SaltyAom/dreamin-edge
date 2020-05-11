@@ -3,7 +3,7 @@ import { useState } from "preact/hooks"
 import { useStoreon } from "storeon/preact"
 
 import Card from "../component/card"
-import Serach from "../component/search"
+import Search from "../component/search"
 import Sort from "../component/sort"
 
 import "../styles/menu-list.styl"
@@ -20,7 +20,7 @@ const Index = () => {
     if (!dreamin.length)
         return (
             <Fragment>
-                <Serach {...{ updateSearch }} />
+                <Search {...{ updateSearch }} />
                 <Sort {...{ sort, updateSort }} />
                 <ul id="menu-list">
                     <li id="menu-fetch">
@@ -66,7 +66,7 @@ const Index = () => {
     if (!menuList.length)
         return (
             <Fragment>
-                <Serach {...{ updateSearch }} />
+                <Search {...{ updateSearch }} />
                 <Sort {...{ sort, updateSort }} />
                 <ul id="menu-list">
                     <li id="menu-fetch">
@@ -84,7 +84,7 @@ const Index = () => {
 
     return (
         <Fragment>
-            <Serach {...{ updateSearch }} />
+            <Search {...{ updateSearch }} />
             <Sort {...{ sort, updateSort }} />
             <ul id="menu-list">
                 {menuList.map(({ name, subMenu, price }) => (
