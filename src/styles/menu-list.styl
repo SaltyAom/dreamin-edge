@@ -1,33 +1,34 @@
 #menu-list
     display flex
     flex-direction column
-    width 460px
+    width 440px
     margin 0 auto
-    padding 20px
-
-    & > .not-found
-        width 95%
-        list-style-type none
-
-        & > .article
-            display flex
-            flex-direction column
-            justify-content center
-            align-items flex-start
-
-            & > .illust
-                display block
-                width 196px
-                height 196px
-                margin 20px auto
-
-            & > .title
-                width 100%
-                font-size 32px
-                color var(--title)
-                font-weight 400
-                text-align center
+    padding 20px 0
 
     @media screen and (max-width 568px)
         &
-            width 95%
+            width 100%
+            padding 20px 5%
+
+#menu-fetch
+    display block
+    width 100%
+
+    & > .illust
+        display block
+        width 80%
+        margin 20px auto 40px auto
+
+    & > .title
+        width 100%
+        font-size 36px
+        color var(--title)
+        text-align center
+
+    & > .detail
+        display block
+        font-size 16px
+        color var(--detail)
+        text-align center
+        font-weight 300
+        margin 12px 0 0

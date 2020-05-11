@@ -4,7 +4,6 @@ import { useStoreon } from "storeon/preact"
 
 import Card from "../component/card"
 import Serach from "../component/search"
-import NoData from "../component/illustrations/no_data"
 
 import "../styles/menu-list.styl"
 
@@ -18,7 +17,11 @@ const Index = () => {
             <Fragment>
                 <Serach {...{ updateSearch }} />
                 <ul id="menu-list">
-                    <h1>Searching</h1>
+                    <li id="menu-fetch">
+                        <img class="illust" src='/assets/illustrations/loading.svg' alt="Loading" />
+                        <h2 class="title">Downloading data...</h2>
+                        <p class="detail">Thanks for your patient!</p>
+                    </li>
                 </ul>
             </Fragment>
         )
@@ -38,11 +41,10 @@ const Index = () => {
             <Fragment>
                 <Serach {...{ updateSearch }} />
                 <ul id="menu-list">
-                    <li class="not-found">
-                        <article class="article">
-                            <NoData />
-                            <h1 class="title">Nothing found</h1>
-                        </article>
+                    <li id="menu-fetch">
+                        <img class="illust" src='/assets/illustrations/not_found.svg' alt="NoT found" />
+                        <h1 class="title">Not Found</h1>
+                        <p class="detail">Maybe try other keyword?</p>
                     </li>
                 </ul>
             </Fragment>
