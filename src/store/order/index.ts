@@ -6,7 +6,6 @@ const order: StoreonModule<OrderStore, OrderEvent> = (store) => {
     store.on('@init', () => ({ order: [] }))
 
     store.on('UPDATE_ORDER', (store, order) => ({
-        // @ts-ignore
         order: [...store.order, order]
     }))
 }

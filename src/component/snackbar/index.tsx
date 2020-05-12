@@ -4,7 +4,6 @@ import { useState, useEffect, useRef, useCallback } from 'preact/hooks'
 import { useStoreon } from 'storeon/preact'
 
 import { OrderEvent, OrderStore } from '../../store/order/types'
-import { Dreamin } from '../../store/dreamin/types'
 
 import './snackbar.styl'
 
@@ -12,7 +11,7 @@ const Snackbar = () => {
     let { order } = useStoreon<OrderStore, OrderEvent>('order')
 
     let [isShowing, showSnackbar] = useState(false),
-        queue = useRef<Dreamin[]>([])
+        queue = useRef<{ name: string; price: number }[]>([])
 
     useEffect(() => {
         if (!Object.keys(order).length) return

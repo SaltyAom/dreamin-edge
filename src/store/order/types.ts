@@ -1,7 +1,8 @@
-import { Dreamin } from '../dreamin/types'
-
 export interface OrderStore {
-    order: Dreamin[]
+    order: Array<{
+        name: string
+        price: number
+    }>
 }
 
 export interface OrderEvent {
