@@ -14,19 +14,7 @@ const StoreLayout: StoreLayoutComponent = ({ children }) => {
             api(
                 'getMenu',
                 'https://apollo-search-maidreamin.now.sh',
-                `
-                    query getMenu {
-                        getMenu {
-                            name {
-                                th
-                                en
-                                jp
-                            }
-                            subMenu
-                            price
-                        }
-                    }
-                `
+                `query getMenu{getMenu{name{th en jp}subMenu price}}`
             )
                 .then((dreamin) => {
                     dispatch('UPDATE_MENU', dreamin)
