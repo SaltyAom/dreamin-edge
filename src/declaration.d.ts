@@ -1,4 +1,4 @@
-import { JSX } from "preact";
+// import { JSX } from 'preact'
 
-export = JSX;
-export as namespace JSX;
+// export = JSX
+// export as namespace JSX

@@ -1,11 +1,11 @@
-import { StoreonStore } from 'storeon'
+import { StoreonModule } from 'storeon'
 
-import { DreaminState, DreaminEvent } from './types'
+import { DreaminStore, DreaminEvent } from './types'
 
-const dreamin = (store: StoreonStore<DreaminState, DreaminEvent>) => {
-    store.on("@init", () => ({ dreamin: [] }))
+const dreamin: StoreonModule<DreaminStore, DreaminEvent> = (store) => {
+    store.on('@init', () => ({ dreamin: [] }))
 
-    store.on("UPDATE_MENU", (store, dreamin) => ({
+    store.on('UPDATE_MENU', (store, dreamin) => ({
         dreamin
     }))
 }

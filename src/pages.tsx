@@ -1,23 +1,25 @@
-import AppLayout from "./layouts/app"
+import { h } from 'preact'
 
-import Index from "./pages/index"
-import Order from "./pages/order"
-import NotFound from "./pages/404"
+import AppLayout from './layouts/app'
 
-import useLocation from "wouter/use-location"
+import Index from './pages/index'
+import Order from './pages/order'
+import NotFound from './pages/404'
+
+import useLocation from 'wouter/use-location'
 
 const Pages = () => {
     const [location] = useLocation()
 
     switch (location) {
-        case "/":
+        case '/':
             return (
                 <AppLayout withSort withSearch>
                     <Index />
                 </AppLayout>
             )
 
-        case "/order":
+        case '/order':
             return (
                 <AppLayout>
                     <Order />

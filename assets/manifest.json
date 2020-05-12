@@ -1,0 +1,17 @@
+{
+    "name": "Dreamin Edge",
+    "short_name": "Dreamin",
+    "theme_color": "#efeff4",
+    "background_color": "#efeff4",
+    "display": "standalone",
+    "orientation": "portrait",
+    "scope": "/",
+    "start_url": "/",
+    "icons": [
+        {
+            "src": "/assets/dreamin.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ]
+}

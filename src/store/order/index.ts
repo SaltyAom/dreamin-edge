@@ -1,11 +1,12 @@
-import { StoreonStore } from "storeon"
+import { StoreonModule } from 'storeon'
 
-import { OrderStore, OrderEvent } from "./types"
+import { OrderStore, OrderEvent } from './types'
 
-const order = (store: StoreonStore<OrderStore, OrderEvent>) => {
-    store.on("@init", () => ({ order: [] }))
+const order: StoreonModule<OrderStore, OrderEvent> = (store) => {
+    store.on('@init', () => ({ order: [] }))
 
-    store.on("UPDATE_ORDER", (store, order) => ({
+    store.on('UPDATE_ORDER', (store, order) => ({
+        // @ts-ignore
         order: [...store.order, order]
     }))
 }

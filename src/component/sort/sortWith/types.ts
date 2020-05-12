@@ -1,9 +1,9 @@
-import { FunctionComponent, VNode } from "preact"
+import { FunctionComponent, VNode } from 'preact'
 
 interface SortWithProps {
-    children: VNode
-    type: "BY" | "ORDER" 
-    value: "asc" | "desc" | "index" | "price"
+    children: string | VNode
+    type: 'by' | 'order'
+    value: 'asc' | 'desc' | 'index' | 'price'
 }
 
 type SortWithComponent = FunctionComponent<SortWithProps>

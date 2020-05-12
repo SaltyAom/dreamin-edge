@@ -1,11 +1,11 @@
-import { StoreonStore } from "storeon"
+import { StoreonModule } from 'storeon'
 
-import { SearchStore, SearchEvent } from "./types"
+import { SearchStore, SearchEvent } from './types'
 
-const search = (store: StoreonStore<SearchStore, SearchEvent>) => {
-    store.on("@init", () => ({ search: "" }))
+const search: StoreonModule<SearchStore, SearchEvent> = (store) => {
+    store.on('@init', () => ({ search: '' }))
 
-    store.on("UPDATE_SEARCH", (store, search) => ({
+    store.on('UPDATE_SEARCH', (store, search) => ({
         search
     }))
 }

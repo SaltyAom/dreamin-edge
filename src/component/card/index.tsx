@@ -1,24 +1,26 @@
-import { useState, useCallback } from "preact/hooks"
+import { h } from 'preact'
+import { useState, useCallback } from 'preact/hooks'
 
-import { useStoreon } from "storeon/preact"
+import { useStoreon } from 'storeon/preact'
 
-import CartIcon from "./assets/bag"
+import CartIcon from './assets/bag'
 
-import "./card.styl"
+import CardComponent from './types'
+import { OrderStore, OrderEvent } from '../../store/order/types'
 
-import CardComponent from "./types"
+import './card.styl'
 
 const Card: CardComponent = ({ name, price }) => {
     let [selected, updateSelected] = useState(name[0])
 
-    let { dispatch } = useStoreon("order")
+    let { dispatch } = useStoreon<OrderStore, OrderEvent>('order')
 
-    let select = useCallback((event) => {
+    let select = useCallback((event: any) => {
         updateSelected(event.target.textContent)
     }, [])
 
     let addOrder = useCallback(
-        () => dispatch("UPDATE_ORDER", { name: selected, price }),
+        () => dispatch('UPDATE_ORDER', { name: selected as string, price }),
         [dispatch, name, price]
     )
 
@@ -28,7 +30,7 @@ const Card: CardComponent = ({ name, price }) => {
                 <header class="detail">
                     <h3 class="name">{selected}</h3>
                     <p class="price">
-                        {price.toLocaleString("th", {
+                        {price.toLocaleString('th', {
                             maximumFractionDigits: 0
                         })}
                         ฿
@@ -37,7 +39,7 @@ const Card: CardComponent = ({ name, price }) => {
                 <aside class="option">
                     {name
                         .filter((name) => name !== selected && name.length)
-                        .map((name: string) => (
+                        .map((name) => (
                             <button key={name} class="name" onClick={select}>
                                 {name}
                             </button>

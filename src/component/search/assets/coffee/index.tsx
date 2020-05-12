@@ -1,3 +1,5 @@
+import { h } from 'preact'
+
 const CoffeeIcon = () => (
     <svg
         xmlns="http://www.w3.org/2000/svg"

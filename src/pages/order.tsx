@@ -1,9 +1,12 @@
-import { useStoreon } from "storeon/preact"
+import { h, FunctionComponent } from 'preact'
+import { useStoreon } from 'storeon/preact'
 
-import "../styles/order.styl"
+import { OrderStore, OrderEvent } from '../store/order/types'
 
-const Order = () => {
-    let { order } = useStoreon("order")
+import '../styles/order.styl'
+
+const Order: FunctionComponent<{}> = () => {
+    const { order } = useStoreon<OrderStore, OrderEvent>('order')
 
     return (
         <table id="order">
@@ -15,8 +18,8 @@ const Order = () => {
             </thead>
             <tbody class="table">
                 {/* Order List */}
-                {order.map(({ name, price }) => (
-                    <tr class="row">
+                {order.map(({ name, price }, index) => (
+                    <tr key={index} class="row">
                         <td class="data name">{name}</td>
                         <td class="data price">{price}</td>
                     </tr>
@@ -29,7 +32,7 @@ const Order = () => {
                         {order.length
                             ? order
                                   .reduce((t, { price }) => t + price, 0)
-                                  .toLocaleString("th", {
+                                  .toLocaleString('th', {
                                       maximumFractionDigits: 0
                                   })
                             : 0}
@@ -46,7 +49,7 @@ const Order = () => {
                                       (t, { price }) => t * 0.1 + price * 0.1,
                                       0
                                   )
-                                  .toLocaleString("th", {
+                                  .toLocaleString('th', {
                                       maximumFractionDigits: 0
                                   })
                             : 0}
@@ -63,7 +66,7 @@ const Order = () => {
                                       (t, { price }) => t * 1.1 + price * 1.1,
                                       0
                                   )
-                                  .toLocaleString("th", {
+                                  .toLocaleString('th', {
                                       maximumFractionDigits: 0
                                   })
                             : 0}

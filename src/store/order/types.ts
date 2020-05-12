@@ -1,9 +1,12 @@
-import { Dreamin } from "../dreamin/types"
+import { Dreamin } from '../dreamin/types'
 
 export interface OrderStore {
     order: Dreamin[]
 }
 
 export interface OrderEvent {
-    'UPDATE_ORDER': Dreamin
+    UPDATE_ORDER: {
+        name: string
+        price: number
+    }
 }

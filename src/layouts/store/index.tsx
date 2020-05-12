@@ -1,17 +1,18 @@
-import { useEffect } from "preact/hooks"
+import { h } from 'preact'
+import { useEffect } from 'preact/hooks'
 
-import useSwr from "swr"
-import fetch from "../../libs/fetch"
+import useSwr from 'swr'
+import fetch from '../../libs/fetch'
 
-import { useStoreon } from "storeon/preact"
+import { useStoreon } from 'storeon/preact'
 
-import StoreLayoutComponent from "./types"
+import StoreLayoutComponent from './types'
 
 const StoreLayout: StoreLayoutComponent = ({ children }) => {
     let { data: dreamin } = useSwr(
         [
-            "https://apollo-search-maidreamin.now.sh",
-            "getMenu",
+            'https://apollo-search-maidreamin.now.sh',
+            'getMenu',
             `
                 query getMenu {
                     getMenu {
@@ -32,7 +33,7 @@ const StoreLayout: StoreLayoutComponent = ({ children }) => {
     const { dispatch } = useStoreon()
 
     useEffect(() => {
-        dispatch("UPDATE_MENU", typeof dreamin !== "undefined" ? dreamin : {})
+        dispatch('UPDATE_MENU', typeof dreamin !== 'undefined' ? dreamin : {})
     }, [dreamin])
 
     return children

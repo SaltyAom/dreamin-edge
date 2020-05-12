@@ -1,12 +1,14 @@
-export default async (...args: string[]) => {
-    if (typeof window === "undefined") return
+import { Dreamin } from '../store/dreamin/types'
 
-    const fetch = await require("isomorphic-unfetch")
+export default async (...args: string[]): Promise<Dreamin[]> => {
+    if (typeof window === 'undefined') return []
 
-    let response = await fetch(args[0], {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        mode: "cors",
+    const fetch = await require('isomorphic-unfetch')
+
+    const response = await fetch(args[0], {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        mode: 'cors',
         body: JSON.stringify({
             operationName: args[1],
             query: args[2],
@@ -14,7 +16,7 @@ export default async (...args: string[]) => {
         })
     })
 
-    let data = await response.json()
+    const data = await response.json()
 
-    return data.data[args[1]]
+    return data.data[args[1]] as Dreamin[]
 }

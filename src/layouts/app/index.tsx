@@ -1,10 +1,11 @@
-import { Fragment } from "preact"
+import { h } from 'preact'
+import { Fragment } from 'preact'
 
-import Search from "../../component/search"
-import Sort from "../../component/sort"
-import Snackbar from "../../component/snackbar"
+import Search from '../../component/search'
+import Sort from '../../component/sort'
+import Snackbar from '../../component/snackbar'
 
-import AppLayoutComponent from "./types"
+import AppLayoutComponent from './types'
 
 const AppLayout: AppLayoutComponent = ({
     children,

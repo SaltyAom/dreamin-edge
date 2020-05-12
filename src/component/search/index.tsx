@@ -1,19 +1,21 @@
-import { useRef } from "preact/hooks"
+import { h } from 'preact'
+import { useRef } from 'preact/hooks'
 
-import { Link } from "wouter"
-import useLocation from "wouter/use-location"
+import { Link } from 'wouter'
 
-import { useStoreon } from "storeon/preact"
+import { useStoreon } from 'storeon/preact'
 
-import SearchIcon from "./assets/search"
-import CoffeeIcon from "./assets/coffee"
+import SearchIcon from './assets/search'
+import CoffeeIcon from './assets/coffee'
 
-import "./search.styl"
+import { SearchStore, SearchEvent } from '../../store/search/types'
+
+import './search.styl'
 
 const Search = ({ withSearch = false }) => {
-    let { dispatch } = useStoreon("search")
+    let { dispatch } = useStoreon<SearchStore, SearchEvent>('search')
 
-    let search = useRef("")
+    let search = useRef('')
 
     if (!withSearch)
         return (
@@ -30,13 +32,13 @@ const Search = ({ withSearch = false }) => {
             </section>
         )
 
-    let handleSearch = (event) => {
+    let handleSearch = (event: any) => {
         let value = event.target.value.toLowerCase()
 
         search.current = value
 
         setTimeout(() => {
-            if (search.current === value) dispatch("UPDATE_SEARCH", value)
+            if (search.current === value) dispatch('UPDATE_SEARCH', value)
         }, 275)
     }
 

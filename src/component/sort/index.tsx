@@ -1,8 +1,9 @@
-import { useReducer, useCallback } from "preact/hooks"
+import { h } from 'preact'
+import { useReducer } from 'preact/hooks'
 
 import SortWith from './sortWith'
 
-import "./sort.styl"
+import './sort.styl'
 
 const Sort = () => {
     let [isOpen, toggleOpen] = useReducer((state) => !state, false)
@@ -10,7 +11,7 @@ const Sort = () => {
     return (
         <section id="sort">
             <button
-                class={`toggler ${isOpen ? "-active" : ""}`}
+                class={`toggler ${isOpen ? '-active' : ''}`}
                 onClick={toggleOpen}
                 aria-label="Sort options"
             >
@@ -21,14 +22,22 @@ const Sort = () => {
                 />
                 Sort
             </button>
-            <article class={`controller ${!isOpen ? "-close" : ""}`}>
+            <article class={`controller ${!isOpen ? '-close' : ''}`}>
                 <section class="row">
-                    <SortWith type="by" value="index">Order</SortWith>
-                    <SortWith type="by" value="price">Price</SortWith>
+                    <SortWith type="by" value="index">
+                        Order
+                    </SortWith>
+                    <SortWith type="by" value="price">
+                        Price
+                    </SortWith>
                 </section>
                 <section class="row">
-                    <SortWith type="order" value="asc">Ascending</SortWith>
-                    <SortWith type="order" value="desc">Descending</SortWith>
+                    <SortWith type="order" value="asc">
+                        Ascending
+                    </SortWith>
+                    <SortWith type="order" value="desc">
+                        Descending
+                    </SortWith>
                 </section>
             </article>
         </section>

@@ -1,13 +1,13 @@
 import { resolve } from 'path'
 
-import CopyWebpackPlugin from "copy-webpack-plugin"
+import CopyWebpackPlugin from 'copy-webpack-plugin'
 
 export default (config, env, helpers, options) => {
     // Use any `index` file, not just index.js
-    config.resolve.alias["preact-cli-entrypoint"] = resolve(
+    config.resolve.alias['preact-cli-entrypoint'] = resolve(
         process.cwd(),
-        "src",
-        "index"
+        'src',
+        'index'
     )
 
     // Stylus

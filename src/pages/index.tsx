@@ -1,18 +1,21 @@
-import { useState } from "preact/hooks"
+import { h, FunctionComponent } from 'preact'
+import { useStoreon } from 'storeon/preact'
 
-import { useStoreon } from "storeon/preact"
+import Card from '../component/card'
 
-import Card from "../component/card"
+import filterSearch from '../libs/filterSearch'
+import applySort from '../libs/applySort'
 
-import filterSearch from "../libs/filterSearch"
-import applySort from "../libs/applySort"
+import { DreaminStore, DreaminEvent } from '../store/dreamin/types'
+import { SortStore, SortEvent } from '../store/sort/types'
+import { SearchStore, SearchEvent } from '../store/search/types'
 
-import "../styles/menu-list.styl"
+import '../styles/menu-list.styl'
 
-const Index = () => {
-    let { search } = useStoreon("search"),
-        { sort } = useStoreon("sort"),
-        { dreamin } = useStoreon("dreamin")
+const Index: FunctionComponent<{}> = () => {
+    const { search } = useStoreon<SearchStore, SearchEvent>('search'),
+        { sort } = useStoreon<SortStore, SortEvent>('sort'),
+        { dreamin } = useStoreon<DreaminStore, DreaminEvent>('dreamin')
 
     if (!dreamin.length)
         return (
@@ -29,7 +32,7 @@ const Index = () => {
             </ul>
         )
 
-    let menuList = applySort(filterSearch(dreamin, search), sort)
+    const menuList = applySort(filterSearch(dreamin, search), sort)
 
     if (!menuList.length)
         return (

@@ -1,3 +1,5 @@
+import { h } from 'preact'
+
 const BagIcon = () => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
