@@ -6,7 +6,9 @@ import CartIcon from "./assets/bag"
 
 import "./card.styl"
 
-const Card = ({ name, price }) => {
+import CardComponent from "./types"
+
+const Card: CardComponent = ({ name, price }) => {
     let [selected, updateSelected] = useState(name[0])
 
     let { dispatch } = useStoreon("order")
@@ -35,7 +37,7 @@ const Card = ({ name, price }) => {
                 <aside class="option">
                     {name
                         .filter((name) => name !== selected && name.length)
-                        .map((name) => (
+                        .map((name: string) => (
                             <button key={name} class="name" onClick={select}>
                                 {name}
                             </button>

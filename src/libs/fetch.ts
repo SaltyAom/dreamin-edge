@@ -1,4 +1,4 @@
-export default async function (...args) {
+export default async (...args: string[]) => {
     if (typeof window === "undefined") return
 
     const fetch = await require("isomorphic-unfetch")

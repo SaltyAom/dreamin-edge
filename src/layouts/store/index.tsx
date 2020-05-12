@@ -5,7 +5,9 @@ import fetch from "../../libs/fetch"
 
 import { useStoreon } from "storeon/preact"
 
-const StoreLayout = ({ children }) => {
+import StoreLayoutComponent from "./types"
+
+const StoreLayout: StoreLayoutComponent = ({ children }) => {
     let { data: dreamin } = useSwr(
         [
             "https://apollo-search-maidreamin.now.sh",

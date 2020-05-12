@@ -3,17 +3,19 @@ import { useRef } from "preact/hooks"
 import { Link } from "wouter"
 import useLocation from "wouter/use-location"
 
+import { useStoreon } from "storeon/preact"
+
 import SearchIcon from "./assets/search"
 import CoffeeIcon from "./assets/coffee"
 
 import "./search.styl"
 
-const Search = ({ updateSearch }) => {
-    let [path] = useLocation()
+const Search = ({ withSearch = false }) => {
+    let { dispatch } = useStoreon("search")
 
     let search = useRef("")
 
-    if (path !== "/")
+    if (!withSearch)
         return (
             <section id="search">
                 <Link href="/">
@@ -34,7 +36,7 @@ const Search = ({ updateSearch }) => {
         search.current = value
 
         setTimeout(() => {
-            if (search.current === value) updateSearch(value)
+            if (search.current === value) dispatch("UPDATE_SEARCH", value)
         }, 275)
     }
 

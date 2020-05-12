@@ -4,15 +4,16 @@ import Search from "../../component/search"
 import Sort from "../../component/sort"
 import Snackbar from "../../component/snackbar"
 
-const AppLayout = ({
+import AppLayoutComponent from "./types"
+
+const AppLayout: AppLayoutComponent = ({
     children,
-    updateSearch = () => null,
-    sort = null,
-    updateSort = () => null
+    withSort = false,
+    withSearch = false
 }) => (
     <Fragment>
-        <Search {...{ updateSearch }} />
-        {sort !== null ? <Sort {...{ sort, updateSort }} /> : null}
+        <Search withSearch={withSearch} />
+        {withSort ? <Sort /> : null}
         <Snackbar />
         {children}
     </Fragment>
