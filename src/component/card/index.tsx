@@ -21,7 +21,7 @@ const Card: CardComponent = ({ name, price }) => {
 
     let addOrder = useCallback(
         () => dispatch('UPDATE_ORDER', { name: selected as string, price }),
-        [dispatch, name, price]
+        [dispatch, selected, price]
     )
 
     return (
@@ -45,6 +45,7 @@ const Card: CardComponent = ({ name, price }) => {
                             </button>
                         ))}
                 </aside>
+
                 <footer class="function">
                     <section class="balloon">
                         <button class="action" onClick={addOrder}>
