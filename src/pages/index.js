@@ -2,9 +2,9 @@ import { useState } from "preact/hooks"
 
 import { useStoreon } from "storeon/preact"
 
+import AppLayout from "../layouts/app"
+
 import Card from "../component/card"
-import Search from "../component/search"
-import Sort from "../component/sort"
 
 import "../styles/menu-list.styl"
 
@@ -19,9 +19,7 @@ const Index = () => {
 
     if (!dreamin.length)
         return (
-            <Fragment>
-                <Search {...{ updateSearch }} />
-                <Sort {...{ sort, updateSort }} />
+            <AppLayout {...{ updateSearch, sort, updateSort }}>
                 <ul id="menu-list">
                     <li id="menu-fetch">
                         <img
@@ -33,7 +31,7 @@ const Index = () => {
                         <p class="detail">Thanks for your patient!</p>
                     </li>
                 </ul>
-            </Fragment>
+            </AppLayout>
         )
 
     let menuList = dreamin.filter(({ subMenu, name }) =>
@@ -65,9 +63,7 @@ const Index = () => {
 
     if (!menuList.length)
         return (
-            <Fragment>
-                <Search {...{ updateSearch }} />
-                <Sort {...{ sort, updateSort }} />
+            <AppLayout {...{ updateSearch, sort, updateSort }}>
                 <ul id="menu-list">
                     <li id="menu-fetch">
                         <img
@@ -79,13 +75,11 @@ const Index = () => {
                         <p class="detail">Maybe try other keyword?</p>
                     </li>
                 </ul>
-            </Fragment>
+            </AppLayout>
         )
 
     return (
-        <Fragment>
-            <Search {...{ updateSearch }} />
-            <Sort {...{ sort, updateSort }} />
+        <AppLayout {...{ updateSearch, sort, updateSort }}>
             <ul id="menu-list">
                 {menuList.map(({ name, subMenu, price }) => (
                     <Card
@@ -106,7 +100,7 @@ const Index = () => {
                     />
                 ))}
             </ul>
-        </Fragment>
+        </AppLayout>
     )
 }
 

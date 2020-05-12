@@ -1,0 +1,44 @@
+#snackbar
+    position fixed
+    z-index 3
+    bottom -68px
+    right 56px
+    display flex
+    flex-direction row
+    justify-content flex-start
+    align-items center
+    width 360px
+    height 64px
+    padding 0 24px
+    background-color var(--snack)
+    animation snackbar 5s ease-in-out 0s 1
+    border-radius 6px
+    box-shadow 0 4px 16px rgba(0,0,0,.175)
+    backdrop-filter blur(4px)
+    -webkit-backdrop-filter blur(4px)
+
+    @keyframes snackbar
+        0%
+            bottom -68px
+
+        10%
+            bottom 28px
+
+        90%
+            bottom 28px
+
+        100%
+            bottom -68px
+
+    & > .title
+        color var(--title)
+        font-size 16px
+        font-weight 400
+
+        & > .order
+            font-weight 500
+            text-transform capitalize
+
+    @media screen and (max-width 568px)
+        width 90%
+        right 5%

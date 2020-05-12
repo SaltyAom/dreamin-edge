@@ -1,8 +1,6 @@
-import { Fragment } from "preact"
-
 import { useStoreon } from "storeon/preact"
 
-import Search from "../component/search"
+import AppLayout from "../layouts/app"
 
 import "../styles/order.styl"
 
@@ -10,8 +8,7 @@ const Order = () => {
     let { order } = useStoreon("order")
 
     return (
-        <Fragment>
-            <Search updateSearch={() => null} />
+        <AppLayout>
             <table id="order">
                 <thead class="header">
                     <tr class="row">
@@ -75,7 +72,7 @@ const Order = () => {
                     </tr>
                 </tbody>
             </table>
-        </Fragment>
+        </AppLayout>
     )
 }
 

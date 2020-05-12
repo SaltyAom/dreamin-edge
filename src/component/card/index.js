@@ -34,7 +34,7 @@ const Card = ({ name, price }) => {
                 </header>
                 <aside class="option">
                     {name
-                        .filter((name) => name !== selected)
+                        .filter((name) => name !== selected && name.length)
                         .map((name) => (
                             <button key={name} class="name" onClick={select}>
                                 {name}

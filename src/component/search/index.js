@@ -46,9 +46,10 @@ const Search = ({ updateSearch }) => {
                 type="text"
                 placeholder="Search Menu"
                 onInput={handleSearch}
+                aria-label="Search menu"
             />
             <Link href="/order">
-                <a class="order-list">
+                <a class="order-list" aria-label="Order list">
                     <CoffeeIcon />
                 </a>
             </Link>

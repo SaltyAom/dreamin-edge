@@ -15,6 +15,7 @@ const Sort = ({ sort, updateSort }) => {
             <button
                 class={`toggler ${isOpen ? "-active" : ""}`}
                 onClick={toggleOpen}
+                aria-label="Sort options"
             >
                 <img
                     class="icon"
