@@ -4,8 +4,8 @@ import { useEffect } from 'preact/hooks'
 import store from './store'
 import { StoreContext } from 'storeon/preact'
 
-import ErrorBoundary from './layouts/error_boundary'
-import StoreLayout from './layouts/store'
+import ErrorBoundary from './layouts/errorBoundary'
+import DataProvider from './layouts/dataProvider'
 
 import Pages from './pages'
 
@@ -13,15 +13,15 @@ import './styles/init.styl'
 
 const App = () => {
     useEffect(() => {
-        document.addEventListener('touchstart', () => null, true)
+        document.addEventListener('touchstart', () => null, { passive: true })
     }, [])
 
     return (
         <ErrorBoundary>
             <StoreContext.Provider value={store}>
-                <StoreLayout>
+                <DataProvider>
                     <Pages />
-                </StoreLayout>
+                </DataProvider>
             </StoreContext.Provider>
         </ErrorBoundary>
     )

@@ -2,10 +2,6 @@ import { h } from 'preact'
 
 import AppLayout from './layouts/app'
 
-import Index from './pages/index'
-import Order from './pages/order'
-import NotFound from './pages/404'
-
 import useLocation from 'wouter/use-location'
 
 const Pages = () => {
@@ -13,6 +9,7 @@ const Pages = () => {
 
     switch (location) {
         case '/':
+            const Index = require('./pages/index').default
             return (
                 <AppLayout withSort withSearch>
                     <Index />
@@ -20,6 +17,7 @@ const Pages = () => {
             )
 
         case '/order':
+            const Order = require('./pages/order').default
             return (
                 <AppLayout>
                     <Order />
@@ -27,6 +25,7 @@ const Pages = () => {
             )
 
         default:
+            const NotFound = require('./pages/404').default
             return <NotFound />
     }
 }
