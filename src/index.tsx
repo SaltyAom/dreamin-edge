@@ -17,13 +17,15 @@ const App = () => {
     }, [])
 
     return (
-        <ErrorBoundary>
-            <StoreContext.Provider value={store}>
-                <DataProvider>
-                    <Pages />
-                </DataProvider>
-            </StoreContext.Provider>
-        </ErrorBoundary>
+        <div>
+            <ErrorBoundary>
+                <StoreContext.Provider value={store}>
+                    <DataProvider>
+                        <Pages />
+                    </DataProvider>
+                </StoreContext.Provider>
+            </ErrorBoundary>
+        </div>
     )
 }
 
