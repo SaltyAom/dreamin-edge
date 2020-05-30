@@ -4,9 +4,9 @@ import AppLayout from './layouts/app'
 
 import useLocation from 'wouter/use-location'
 
-import Index from './pages/index'
-import Order from './pages/order'
-import NotFound from './pages/404'
+import Index from './routes/index'
+import Order from './routes/order'
+import NotFound from './routes/404'
 
 const Pages = () => {
     const [location] = useLocation()
