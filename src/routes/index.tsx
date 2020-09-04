@@ -1,4 +1,4 @@
-import { h, FunctionComponent } from 'preact'
+import { h } from 'preact'
 import { useStoreon } from 'storeon/preact'
 
 import Card from '../component/card'
@@ -12,7 +12,7 @@ import { SearchStore, SearchEvent } from '../store/search/types'
 
 import '../styles/menu-list.styl'
 
-const Index: FunctionComponent<{}> = () => {
+const Index = () => {
     const { search } = useStoreon<SearchStore, SearchEvent>('search'),
         { sort } = useStoreon<SortStore, SortEvent>('sort'),
         { dreamin } = useStoreon<DreaminStore, DreaminEvent>('dreamin')
@@ -20,15 +20,11 @@ const Index: FunctionComponent<{}> = () => {
     if (!dreamin.length)
         return (
             <ul id="menu-list">
-                <li id="menu-fetch">
-                    <img
-                        class="illust"
-                        src="/assets/illustrations/loading.svg"
-                        alt="Loading"
-                    />
-                    <h2 class="title">Downloading data...</h2>
-                    <p class="detail">Thanks for your patient!</p>
-                </li>
+                {Array(24)
+                    .fill(null)
+                    .map((_, index) => (
+                        <Card key={index} index={index} preload />
+                    ))}
             </ul>
         )
 
@@ -51,7 +47,7 @@ const Index: FunctionComponent<{}> = () => {
 
     return (
         <ul id="menu-list">
-            {menuList.map(({ name, subMenu, price }) => (
+            {menuList.map(({ name, subMenu, price }, index) => (
                 <Card
                     key={
                         name === null
@@ -60,6 +56,7 @@ const Index: FunctionComponent<{}> = () => {
                     }
                     name={name === null ? subMenu : [name.th, name.en, name.jp]}
                     price={price}
+                    index={index}
                 />
             ))}
         </ul>

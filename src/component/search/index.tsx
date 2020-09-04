@@ -1,5 +1,5 @@
 import { h } from 'preact'
-import { useRef } from 'preact/hooks'
+import { useRef, useCallback } from 'preact/hooks'
 
 import { Link } from 'wouter'
 
@@ -17,6 +17,17 @@ const Search = ({ withSearch = false }) => {
 
     let search = useRef('')
 
+    let handleSearch = useCallback((event: Event) => {
+        let input = event.target as HTMLInputElement,
+            value = input.value.toLowerCase()
+
+        search.current = value
+
+        setTimeout(() => {
+            if (search.current === value) dispatch('UPDATE_SEARCH', value)
+        }, 175)
+    }, [])
+
     if (!withSearch)
         return (
             <section id="search">
@@ -31,16 +42,6 @@ const Search = ({ withSearch = false }) => {
                 </header>
             </section>
         )
-
-    let handleSearch = (event: any) => {
-        let value = event.target.value.toLowerCase()
-
-        search.current = value
-
-        setTimeout(() => {
-            if (search.current === value) dispatch('UPDATE_SEARCH', value)
-        }, 275)
-    }
 
     return (
         <section id="search">

@@ -1,8 +1,8 @@
-import { h, FunctionComponent } from 'preact'
+import { h } from 'preact'
 
 import '../styles/404.styl'
 
-const NotFound: FunctionComponent<{}> = () => (
+const NotFound = () => (
     <main id="not-found">
         <img
             class="illust"

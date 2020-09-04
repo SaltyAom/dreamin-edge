@@ -1,7 +1,7 @@
-import { h, FunctionComponent } from 'preact'
+import { h } from 'preact'
 
 import Receipt from '../component/receipt'
 
-const Order: FunctionComponent<{}> = () => <Receipt />
+const Order = () => <Receipt />
 
 export default Order

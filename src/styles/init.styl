@@ -7,6 +7,7 @@
     --root #fff
     --background #f9fafc
     --snack transparentify(#efeff4, .85)
+    --preload transparentify(#000, .0625)
 
     --active rgba(0,0,0,.05)
     --selection rgba(0,0,0,.15)
@@ -26,6 +27,11 @@ body
 ::selection, ::-webkit-selection
     background-color var(--selection)
 
+@keyframes card-in
+    from
+        opacity 0
+        transform translateY(16px)
+
 @media screen and (prefers-color-scheme dark)
     :root
         --title #fafafa
@@ -36,6 +42,7 @@ body
         --root #313131
         --background #222
         --snack transparentify(#393939, .85)
+        --preload transparentify(#fff, .1)
 
         --active rgba(255,255,255,.05)
         --selection rgba(255,255,255,.15)

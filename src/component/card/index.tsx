@@ -3,37 +3,58 @@ import { useState, useCallback } from 'preact/hooks'
 
 import { useStoreon } from 'storeon/preact'
 
-import CartIcon from './assets/bag'
-
 import CardComponent from './types'
 import { OrderStore, OrderEvent } from '../../store/order/types'
 
 import './card.styl'
 
-const Card: CardComponent = ({ name, price }) => {
+const Card: CardComponent = ({ name = [], price = 0, preload, index }) => {
     let [selected, updateSelected] = useState(name[0])
 
     let { dispatch } = useStoreon<OrderStore, OrderEvent>('order')
 
-    let select = useCallback((event: any) => {
-        updateSelected(event.target.textContent)
+    let select = useCallback((event: MouseEvent) => {
+        let { textContent } = event.target as HTMLButtonElement
+
+        updateSelected(textContent)
     }, [])
 
     let addOrder = useCallback(
-        () => dispatch('UPDATE_ORDER', { name: selected as string, price }),
+        () => dispatch('UPDATE_ORDER', { name: selected, price }),
         [dispatch, selected, price]
     )
 
+    let animationDuration = index < 25 ? `${index * 0.1 + 0.15}s` : ''
+
+    if (preload)
+        return (
+            <li class="list">
+                <article class="card -preload" style={{ animationDuration }}>
+                    <header class="detail">
+                        <h3 class="name" />
+                        <p class="price" />
+                    </header>
+                    <aside class="option">
+                        <button class="name" />
+                        <button class="name" />
+                    </aside>
+
+                    <footer class="function">
+                        <section class="balloon" />
+                    </footer>
+                </article>
+            </li>
+        )
+
     return (
         <li class="list">
-            <article class="card">
+            <article class="card" style={{ animationDuration }}>
                 <header class="detail">
                     <h3 class="name">{selected}</h3>
                     <p class="price">
                         {price.toLocaleString('th', {
                             maximumFractionDigits: 0
                         })}
-                        ฿
                     </p>
                 </header>
                 <aside class="option">
@@ -49,7 +70,7 @@ const Card: CardComponent = ({ name, price }) => {
                 <footer class="function">
                     <section class="balloon">
                         <button class="action" onClick={addOrder}>
-                            <CartIcon />
+                            <img class="icon" src="/assets/icons/bag.svg" />
                             Order
                         </button>
                     </section>

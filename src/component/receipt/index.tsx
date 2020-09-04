@@ -1,4 +1,4 @@
-import { h, FunctionComponent } from 'preact'
+import { h } from 'preact'
 import { useStoreon } from 'storeon/preact'
 
 import Row from './row'
@@ -7,7 +7,7 @@ import { OrderStore, OrderEvent } from '../../store/order/types'
 
 import './receipt.styl'
 
-const Receipt: FunctionComponent<{}> = () => {
+const Receipt = () => {
     const { order } = useStoreon<OrderStore, OrderEvent>('order')
 
     return (

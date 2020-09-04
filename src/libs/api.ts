@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { Dreamin } from '../store/dreamin/types'
 
 const getMenu = async (
@@ -20,9 +23,9 @@ const getMenu = async (
         })
     })
 
-    const data = await response.json()
+    const { data } = await response.json()
 
-    return data.data[operationName] as Dreamin[]
+    return data[operationName] as Dreamin[]
 }
 
 export default getMenu

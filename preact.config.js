@@ -20,8 +20,10 @@ export default (config, env, helpers, options) => {
     stylusRule.use[0].options.options.module = false
 
     config.plugins.push(
-        new CopyWebpackPlugin([
-            { from: `${__dirname}/assets`, to: `${__dirname}/build/assets` }
-        ])
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: `${__dirname}/assets`, to: `${__dirname}/build/assets` }
+            ]
+        })
     )
 }

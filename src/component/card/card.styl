@@ -12,6 +12,7 @@
         box-shadow 0 4px 16px rgba(0,0,0,.1)
         border-radius 4px
         transition box-shadow .2s ease-out
+        animation card-in .15s ease-out
 
         &:hover,
         &:focus
@@ -22,6 +23,29 @@
                 opacity 1
                 transform translateY(0)
                 transition opacity .2s ease-out, transform .2s ease-out, z-index 0s ease-out
+
+        &.-preload
+            & > .detail
+                & > .name,
+                & > .price
+                    width 75%
+                    height 36px
+                    background var(--preload)
+                    border-radius 4px
+
+                & > .price
+                    width 64px
+
+                    &::after
+                        content ""
+
+            & > .option
+                & > .name
+                    width 35%
+                    height 16px
+                    margin-right 12px
+                    background var(--preload)
+                    border-radius 4px
 
         & > .detail
             display flex
@@ -43,10 +67,14 @@
             & > .price
                 color var(--detail)
                 font-size 21px
-                font-weight 400
+                font-weight 300
                 margin 0
                 padding 0 0 0 12px
+                white-space nowrap
                 cursor default
+
+                &::after
+                    content " ฿"
 
         & > .option
             display block
@@ -112,7 +140,7 @@
                     min-width 160px
                     font-size 18px
                     color var(--title)
-                    font-weight 400
+                    font-weight 300
                     padding 8px
                     background-color transparent
                     border 0
@@ -127,5 +155,6 @@
                     & > .icon
                         width 24px
                         height 24px
-                        margin 0 8px 0 0
+                        margin 0 8px 0 4px
                         padding 1.5px
+                        color var(--detail)
