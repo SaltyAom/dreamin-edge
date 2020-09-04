@@ -39,8 +39,8 @@ const Snackbar = () => {
     return (
         <section id="snackbar">
             <h2 class="title">
-                <span class="order">{queue.current[0].name}</span> has been
-                added to order.
+                Added <span class="order">{queue.current[0].name}</span> to
+                order.
             </h2>
         </section>
     )

@@ -1,0 +1,109 @@
+#receipt
+    width 440px
+    margin 40px auto 20px auto
+    padding 8px 0
+    border-radius 4px
+    background-color var(--root)
+    box-shadow 0 4px 16px rgba(0,0,0,.2)
+    border-spacing 0
+    animation card-in .2s ease-out
+
+    & > .header
+        & > .row
+            border-bottom 1px solid var(--border)
+
+            & > .data
+                color var(--title)
+                font-size 21px
+                font-weight 700
+                padding 8px 16px 16px 16px
+                border-bottom 1px solid var(--selection)
+
+                &.price
+                    text-align center
+                    white-space no-wrap
+                    font-variant-numeric tabular-nums
+
+    & > .table
+        & > .row
+            background-color transparent
+            transition background-color .2s ease-out
+
+            &.-border
+                & > .data
+                    border-top 1px solid var(--selection)
+
+            &.-disabled
+                & > .data
+                    text-decoration line-through
+                    opacity .375
+
+            &:hover,
+            &:focus
+                background-color var(--active)
+
+            & > .data
+                color var(--detail)
+                font-size 21px
+                font-weight 400
+                text-transform capitalize
+                padding 16px
+                cursor default
+
+                &.-remove
+                    position relative
+                    padding 16px 16px 16px 8px
+
+                    & > .order
+                        position absolute
+                        left 44px + 16px
+                        width calc(100% + 44px)
+                        transform translateX(-44px)
+                    
+                    &:hover,
+                    &:focus
+                        & > .order
+                            transform translateX(0)
+
+                        & > .remove
+                            opacity 1
+                            z-index 1
+
+                &.price
+                    text-align right
+                    font-variant-numeric tabular-nums
+
+                &.name
+                    display flex
+                    flex-direction row
+                    align-items center
+
+                    & > .order
+                        transition transform .2s ease-out
+
+                    & > .remove
+                        z-index -1
+                        display grid
+                        place-items center
+                        appearance none
+                        -webkit-appearance none
+                        color var(--detail)
+                        width 44px
+                        min-width 44px
+                        height 44px
+                        margin-right 8px
+                        padding 0
+                        background-color transparent
+                        border 0
+                        cursor pointer
+                        opacity 0
+                        border-radius 22px
+                        transition background-color .15s ease-out, opacity .2s ease-out
+                        box-sizing contet-box
+
+                        &:hover,
+                        &:focus
+                            background-color var(--preload)
+
+    @media screen and (max-width 567.9px)
+        width 90%

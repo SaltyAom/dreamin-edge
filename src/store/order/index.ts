@@ -8,6 +8,10 @@ const order: StoreonModule<OrderStore, OrderEvent> = (store) => {
     store.on('UPDATE_ORDER', (store, order) => ({
         order: [...store.order, order]
     }))
+
+    store.on('REMOVE_ORDER', ({ order }, toBeRemove) => ({
+        order: order.filter((_, index) => index !== toBeRemove)
+    }))
 }
 
 export default order

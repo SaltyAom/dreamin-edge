@@ -53,7 +53,7 @@ const Search = ({ withSearch = false }) => {
                 onInput={handleSearch}
                 aria-label="Search menu"
             />
-            <Link href="/order">
+            <Link href="/receipt">
                 <a class="order-list" aria-label="Order list">
                     <CoffeeIcon />
                 </a>

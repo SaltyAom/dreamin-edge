@@ -10,4 +10,6 @@ export interface OrderEvent {
         name: string
         price: number
     }
+
+    REMOVE_ORDER: number
 }

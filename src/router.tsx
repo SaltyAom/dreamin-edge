@@ -5,7 +5,7 @@ import AppLayout from './layouts/app'
 import useLocation from 'wouter/use-location'
 
 import Index from './routes/index'
-import Order from './routes/order'
+import Receipt from './routes/receipt'
 import NotFound from './routes/404'
 
 const Pages = () => {
@@ -19,10 +19,10 @@ const Pages = () => {
                 </AppLayout>
             )
 
-        case '/order':
+        case '/receipt':
             return (
                 <AppLayout>
-                    <Order />
+                    <Receipt />
                 </AppLayout>
             )
 
