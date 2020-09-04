@@ -36,8 +36,11 @@
 
             &.-disabled
                 & > .data
-                    text-decoration line-through
                     opacity .375
+
+                    &.price,
+                    & > .order
+                        text-decoration line-through
 
             &:hover,
             &:focus
