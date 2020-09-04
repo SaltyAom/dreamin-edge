@@ -4,9 +4,12 @@
     list-style-type none
 
     & > .wrapper
-        display inline
         content-visibility auto
         contain-intrinsic-size 200px
+        padding 0 32px
+
+        @media screen and (max-width 567.9px)
+            padding 0 5%
 
         &:hover,
         &:focus
@@ -19,7 +22,7 @@
         & > .card
             display flex
             flex-direction column
-            margin 8px 0
+            margin 0 0 16px 0
             padding 12px 24px
             background-color var(--root)
             box-shadow 0 4px 16px rgba(0,0,0,.1)
@@ -110,13 +113,13 @@
 
 .function
     position absolute
-    z-index 1
+    z-index -1
     left 0
     bottom -12px + (-20px) + (-32px)
     display block
     opacity 0
     background-color transparent
-    padding 8px 0
+    padding 16px 32px
     transform translateY(12px)
     transition opacity .2s ease-out, transform .2s ease-out, z-index .4s linear
     content-visibility auto

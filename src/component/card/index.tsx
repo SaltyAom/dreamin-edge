@@ -1,14 +1,20 @@
 import { h } from 'preact'
 import { useState, useCallback } from 'preact/hooks'
+import { memo } from 'preact/compat'
 
 import { useStoreon } from 'storeon/preact'
 
-import CardComponent from './types'
 import { OrderStore, OrderEvent } from '../../store/order/types'
+
+import CardComponent, { CardProps } from './types'
 
 import './card.styl'
 
-const Card: CardComponent = ({ name = [], price = 0, preload, index }) => {
+const memoize = (prev: CardProps, next: CardProps) =>
+    prev.name.reduce((prev, current) => prev + current) ===
+    next.name.reduce((prev, current) => prev + current)
+
+const Card: CardComponent = memo(({ name = [], price = 0, preload, index }) => {
     let [selected, updateSelected] = useState(name[0])
 
     let { dispatch } = useStoreon<OrderStore, OrderEvent>('order')
@@ -96,6 +102,6 @@ const Card: CardComponent = ({ name = [], price = 0, preload, index }) => {
             </footer>
         </li>
     )
-}
+}, memoize)
 
 export default Card

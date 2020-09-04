@@ -1,12 +1,12 @@
 import { FunctionComponent } from 'preact'
 
-interface CardProps {
+export interface CardProps {
     name: string[]
     price: number
     preload?: false
     index: number
 }
-interface PreloadCardProps {
+export interface PreloadCardProps {
     name?: string[]
     price?: number
     preload: true

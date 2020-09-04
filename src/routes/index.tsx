@@ -1,4 +1,6 @@
 import { h } from 'preact'
+import { useMemo } from 'preact/hooks'
+
 import { useStoreon } from 'storeon/preact'
 
 import Card from '../component/card'
@@ -13,9 +15,14 @@ import { SearchStore, SearchEvent } from '../store/search/types'
 import '../styles/menu-list.styl'
 
 const Index = () => {
-    const { search } = useStoreon<SearchStore, SearchEvent>('search'),
+    let { search } = useStoreon<SearchStore, SearchEvent>('search'),
         { sort } = useStoreon<SortStore, SortEvent>('sort'),
         { dreamin } = useStoreon<DreaminStore, DreaminEvent>('dreamin')
+
+    let menuList = useMemo(
+        () => applySort(filterSearch(dreamin, search), sort),
+        [dreamin, search]
+    )
 
     if (!dreamin.length)
         return (
@@ -27,8 +34,6 @@ const Index = () => {
                     ))}
             </ul>
         )
-
-    const menuList = applySort(filterSearch(dreamin, search), sort)
 
     if (!menuList.length)
         return (
