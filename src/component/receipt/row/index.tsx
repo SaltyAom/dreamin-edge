@@ -42,7 +42,6 @@ const Row: RowComponent = ({
     return (
         <tr
             onClick={toggleExclude}
-            tabIndex={withRemove ? 1 : 0}
             class={`row ${withBorder ? '-border' : ''} ${
                 exclude.includes(index) ? '-disabled' : ''
             }`}

@@ -27,6 +27,7 @@
     & > .table
         & > .row
             background-color transparent
+            outline none
             transition background-color .2s ease-out
 
             &.-border
@@ -83,8 +84,9 @@
 
                     & > .remove
                         z-index -1
-                        display grid
-                        place-items center
+                        display flex
+                        justify-content center
+                        align-items center
                         appearance none
                         -webkit-appearance none
                         color var(--detail)
@@ -100,6 +102,7 @@
                         border-radius 22px
                         transition background-color .15s ease-out, opacity .2s ease-out
                         box-sizing contet-box
+                        outline none
 
                         &:hover,
                         &:focus
