@@ -9,7 +9,7 @@ const StoreLayout: StoreLayoutComponent = ({ children }) => {
 
     useEffect(() => {
         let getAPI = () => {
-            fetch('http://localhost:3000/menu')
+            fetch('https://dreamin-edge-api.vercel.app')
                 .then((res) => res.json())
                 .then((dreamin) => {
                     console.log('A', dreamin)
