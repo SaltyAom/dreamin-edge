@@ -55,11 +55,15 @@ const Index = () => {
             {menuList.map(({ name, subMenu, price }, index) => (
                 <Card
                     key={
-                        name === null
+                        typeof name === 'undefined'
                             ? subMenu[0]
                             : `${name.th}-${name.jp}-${price}`
                     }
-                    name={name === null ? subMenu : [name.th, name.en, name.jp]}
+                    name={
+                        typeof name === 'undefined'
+                            ? subMenu
+                            : [name.th, name.en, name.jp]
+                    }
                     price={price}
                     index={index}
                 />
