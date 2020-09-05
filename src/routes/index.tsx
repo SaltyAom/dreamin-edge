@@ -42,7 +42,7 @@ const Index = () => {
                     <img
                         class="illust"
                         src="/assets/illustrations/not_found.svg"
-                        alt="NoT found"
+                        alt="Not found"
                     />
                     <h1 class="title">Not Found</h1>
                     <p class="detail">Maybe try other keyword?</p>

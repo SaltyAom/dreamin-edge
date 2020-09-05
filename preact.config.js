@@ -22,7 +22,14 @@ export default (config, env, helpers, options) => {
     config.plugins.push(
         new CopyWebpackPlugin({
             patterns: [
-                { from: `${__dirname}/assets`, to: `${__dirname}/build/assets` }
+                {
+                    from: `${__dirname}/assets`,
+                    to: `${__dirname}/build/assets`
+                },
+                {
+                    from: `${__dirname}/assets/robots.txt`,
+                    to: `${__dirname}/build/robots.txt`
+                }
             ]
         })
     )

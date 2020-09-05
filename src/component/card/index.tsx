@@ -56,10 +56,14 @@ const Card: CardComponent = memo(({ name = [], price = 0, preload, index }) => {
                 </div>
                 <footer class="function">
                     <section class="balloon">
-                        {/* <button class="action" onClick={addOrder}>
-                            <img class="icon" src="/assets/icons/bag.svg" />
+                        <button style={{ display: 'none' }} class="action">
+                            <img
+                                class="icon"
+                                src="/assets/icons/bag.svg"
+                                alt="Order icon"
+                            />
                             Order
-                        </button> */}
+                        </button>
                     </section>
                 </footer>
             </li>
@@ -95,7 +99,11 @@ const Card: CardComponent = memo(({ name = [], price = 0, preload, index }) => {
             <footer class="function">
                 <section class="balloon">
                     <button class="action" onClick={addOrder}>
-                        <img class="icon" src="/assets/icons/bag.svg" />
+                        <img
+                            class="icon"
+                            src="/assets/icons/bag.svg"
+                            alt="Order icon"
+                        />
                         Order
                     </button>
                 </section>
