@@ -30,7 +30,7 @@ const Card: CardComponent = memo(({ name = [], price = 0, preload, index }) => {
         [dispatch, selected, price]
     )
 
-    let animationDuration = index < 25 ? `${index * 0.1 + 0.15}s` : ''
+    let animationDuration = index < 9 ? `${index * 0.1 + 0.15}s` : ''
 
     if (preload)
         return (
@@ -56,10 +56,10 @@ const Card: CardComponent = memo(({ name = [], price = 0, preload, index }) => {
                 </div>
                 <footer class="function">
                     <section class="balloon">
-                        <button class="action" onClick={addOrder}>
+                        {/* <button class="action" onClick={addOrder}>
                             <img class="icon" src="/assets/icons/bag.svg" />
                             Order
-                        </button>
+                        </button> */}
                     </section>
                 </footer>
             </li>
