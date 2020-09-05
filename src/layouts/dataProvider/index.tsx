@@ -12,11 +12,9 @@ const StoreLayout: StoreLayoutComponent = ({ children }) => {
             fetch('https://dreamin-edge-api.now.sh/menu')
                 .then((res) => res.json())
                 .then((dreamin) => {
-                    console.log('A', dreamin)
                     dispatch('UPDATE_MENU', dreamin)
                 })
-                .catch((err) => {
-                    console.log(err)
+                .catch(() => {
                     setTimeout(getAPI, 5000)
                 })
         }
