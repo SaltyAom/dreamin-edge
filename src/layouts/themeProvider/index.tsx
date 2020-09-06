@@ -2,14 +2,14 @@ import { h, Fragment } from 'preact'
 import { useState, useEffect } from 'preact/hooks'
 
 const ThemeProvider = ({ children }) => {
-    let [isDarkTheme, updateIsDarkTheme] = useState(
-        typeof window !== 'undefined'
-            ? window.matchMedia &&
-                  window.matchMedia('(prefers-color-scheme: dark)').matches
-            : true
-    )
+    let [isDarkTheme, updateIsDarkTheme] = useState(true)
 
     useEffect(() => {
+        updateIsDarkTheme(
+            window.matchMedia &&
+                window.matchMedia('(prefers-color-scheme: dark)').matches
+        )
+
         window
             .matchMedia('(prefers-color-scheme: dark)')
             .addEventListener('change', ({ matches }) => {
