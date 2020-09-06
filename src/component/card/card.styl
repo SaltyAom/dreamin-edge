@@ -125,6 +125,9 @@
     content-visibility auto
     contain-intrinsic-size 40px
 
+    @media screen and (max-width 567.9px)
+        padding 16px 5%
+
     &:hover,
     &:focus
         z-index 1
@@ -177,3 +180,11 @@
                 margin 0 8px 0 4px
                 padding 1.5px
                 color var(--detail)
+
+#menu-list
+    & > .list:last-child
+        & > .wrapper
+            padding-bottom 20px
+
+        & > .function
+            bottom -44px
