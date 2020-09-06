@@ -6,6 +6,7 @@ import { StoreContext } from 'storeon/preact'
 
 import ErrorBoundary from './layouts/errorBoundary'
 import DataProvider from './layouts/dataProvider'
+import ThemeProvider from './layouts/themeProvider'
 
 import Router from './router'
 
@@ -19,11 +20,13 @@ const App = () => {
     return (
         <main>
             <ErrorBoundary>
-                <StoreContext.Provider value={store}>
-                    <DataProvider>
-                        <Router />
-                    </DataProvider>
-                </StoreContext.Provider>
+                <ThemeProvider>
+                    <StoreContext.Provider value={store}>
+                        <DataProvider>
+                            <Router />
+                        </DataProvider>
+                    </StoreContext.Provider>
+                </ThemeProvider>
             </ErrorBoundary>
         </main>
     )
