@@ -30,7 +30,7 @@ const Index = () => {
 
     let menuList = useMemo(
         () => applySort(filterSearch(dreamin, search), sort),
-        [dreamin, search]
+        [dreamin, search, sort]
     )
 
     let lazyLoadMenu = useCallback(() => {
@@ -47,7 +47,7 @@ const Index = () => {
 
     useEffect(() => {
         updateTotalDisplayMenu(initialDisplayMenu)
-    }, [search])
+    }, [search, sort])
 
     useEffect(() => {
         if (previousLazyload.current)
