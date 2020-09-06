@@ -3,8 +3,10 @@ import { useState, useEffect } from 'preact/hooks'
 
 const ThemeProvider = ({ children }) => {
     let [isDarkTheme, updateIsDarkTheme] = useState(
-        window.matchMedia &&
-            window.matchMedia('(prefers-color-scheme: dark)').matches
+        typeof window !== 'undefined'
+            ? window.matchMedia &&
+                  window.matchMedia('(prefers-color-scheme: dark)').matches
+            : true
     )
 
     useEffect(() => {
