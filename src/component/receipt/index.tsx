@@ -1,5 +1,3 @@
 import Row from './row'
 
-export {
-    Row
-}
+export { Row }

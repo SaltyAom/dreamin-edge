@@ -1,5 +1,4 @@
-import { h } from 'preact'
-import { Fragment } from 'preact'
+import { h, Fragment } from 'preact'
 
 import Search from '../../component/search'
 import Sort from '../../component/sort'
@@ -14,7 +13,7 @@ const AppLayout: AppLayoutComponent = ({
 }) => (
     <Fragment>
         <Search withSearch={withSearch} />
-        {withSort ? <Sort /> : null}
+        {withSort ? <Sort /> : <Fragment></Fragment>}
         <Snackbar />
         {children}
     </Fragment>

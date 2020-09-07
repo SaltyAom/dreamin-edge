@@ -1,4 +1,5 @@
 import { h } from 'preact'
+import { useMemo } from 'preact/hooks'
 
 import { useStoreon } from 'storeon/preact'
 
@@ -13,6 +14,20 @@ const Receipt = () => {
     let { exclude } = useStoreon<ExcludeStore, ExcludeEvent>('exclude')
     let { order } = useStoreon<OrderStore, OrderEvent>('order')
 
+    let menu = useMemo(
+            () => order.filter((_, index) => !exclude.includes(index)),
+            [order]
+        ),
+        price = useMemo(
+            () => menu.reduce((order, { price }) => order + price, 0),
+            [order]
+        ),
+        serviceCharge = useMemo(
+            () => menu.reduce((order, { price }) => order + price * 0.1, 0),
+            [order]
+        ),
+        summary = useMemo(() => price + serviceCharge, [order])
+
     return (
         <table id="receipt">
             <thead class="header">
@@ -26,27 +41,10 @@ const Receipt = () => {
                     <Row key={index} {...{ name, price, index }} withRemove />
                 ))}
 
-                <Row
-                    name="Summary"
-                    price={order
-                        .filter((_, index) => !exclude.includes(index))
-                        .reduce((order, { price }) => order + price, 0)}
-                    withBorder
-                />
-                <Row
-                    name="Service Charge"
-                    price={order
-                        .filter((_, index) => !exclude.includes(index))
-                        .reduce((order, { price }) => order + price * 0.1, 0)}
-                />
+                <Row name="Summary" price={price} withBorder />
+                <Row name="Service Charge" price={serviceCharge} />
 
-                <Row
-                    name="Total"
-                    price={order
-                        .filter((_, index) => !exclude.includes(index))
-                        .reduce((order, { price }) => order + price * 1.1, 0)}
-                    withBorder
-                />
+                <Row name="Total" price={summary} withBorder />
             </tbody>
         </table>
     )
